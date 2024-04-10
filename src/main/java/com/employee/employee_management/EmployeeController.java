@@ -13,9 +13,9 @@ public class EmployeeController {
     @Autowired
     EmployeeService employeeServiceImpl;
 
-    @PostMapping("/")
-    public void addEmployee(){
-        employeeServiceImpl.addEmployee();
+    @PostMapping("/create")
+    public void addEmployee(Employee employee){
+        employeeServiceImpl.addEmployee(employee);
     }
 
     @GetMapping("/find/{id}")
