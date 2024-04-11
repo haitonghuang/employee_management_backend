@@ -24,9 +24,9 @@ public class EmployeeController {
 
     @GetMapping("/find/{id}")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable long id){
-        Optional<Employee> employee = employeeServiceImpl.findEmployeeById(id);
+        Optional<Employee> employee = Optional.of(employeeServiceImpl.findEmployeeById(id));
         if(!employee.isPresent()){
-            throw new ResourceNotFoundException('employee not found');
+            throw new ResourceNotFoundException("Employee Not Found");
         }
         return ResponseEntity.ok(employee.get());
     }
