@@ -5,10 +5,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 
 
@@ -23,12 +25,14 @@ public class EmployeeController {
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<Employee> getEmployeeById(@PathVariable long id){
-        Optional<Employee> employee = Optional.of(employeeServiceImpl.findEmployeeById(id));
-        if(!employee.isPresent()){
-            throw new ResourceNotFoundException("Employee Not Found");
-        }
-        return ResponseEntity.ok(employee.get());
+    public Employee getEmployeeById(@PathVariable long id){
+        // Optional<Employee> employee = Optional.of(employeeServiceImpl.findEmployeeById(id));
+        // if(!employee.isPresent()){
+        //     throw new ResourceNotFoundException("Employee Not Found");
+        // }
+        // return ResponseEntity.ok(employee.get());
+        return employeeServiceImpl.findEmployeeById(id);
+
     }
 
 

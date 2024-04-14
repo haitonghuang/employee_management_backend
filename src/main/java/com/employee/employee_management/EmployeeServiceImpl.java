@@ -3,6 +3,7 @@ package com.employee.employee_management;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
 
@@ -19,14 +20,11 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
     @Override
     public Employee findEmployeeById(long id){
-        Optional<Employee> opt = employeeRepository.findById(id);
-        if(opt.isPresent()){
-            return opt.get();
-        }else{
-            return null;
-        }
-
+        return employeeRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Employee Not Found"));
+       
     }
+
+    
     @Override
     public void addEmployee(Employee employee){
         // ArrayList<Employee> emp = new ArrayList<Employee>();
