@@ -17,18 +17,19 @@ public class Employee {
     private String fullName;
     private String email;
     private String title;
-    private String department;
+    @Column(name = "department_id")
+    private Integer departmentId;
     @Column(name = "phone_no")
     private String phoneNumber;
 
     public Employee() {
     }
 
-    public Employee(String fullName, String email, String jobTitle, String department, String phoneNumber) {
+    public Employee(String fullName, String email, String jobTitle, Integer departmentId, String phoneNumber) {
         this.fullName = fullName;
         this.email = email;
         this.title = jobTitle;
-        this.department = department;
+        this.departmentId = departmentId;
         this.phoneNumber = phoneNumber;
     }
 
@@ -64,12 +65,12 @@ public class Employee {
         this.title = title;
     }
 
-    public String getDepartment() {
-        return department;
+    public Integer getDepartment() {
+        return departmentId;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
+    public void setDepartment(Integer departmentId) {
+        this.departmentId = departmentId;
     }
 
     public String getPhoneNumber() {
