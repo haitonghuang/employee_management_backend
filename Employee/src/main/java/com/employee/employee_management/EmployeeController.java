@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
+@RequestMapping("/api/employees")
 @CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true", methods = { RequestMethod.GET,
         RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE })
 public class EmployeeController {
@@ -41,7 +43,7 @@ public class EmployeeController {
 
     }
 
-    @GetMapping("/employees")
+    @GetMapping("/")
     public List<Employee> getAllEmployee() {
         // Optional<Employee> employee =
         // Optional.of(employeeServiceImpl.findEmployeeById(id));
@@ -53,14 +55,14 @@ public class EmployeeController {
 
     }
 
-    @DeleteMapping("/employees/{id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteEmployee(@PathVariable long id) {
         employeeServiceImpl.removeEmployeeById(id);
         // return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping("/employees/{id}")
+    @PutMapping("/{id}")
     public void updateEmployee(@PathVariable long id, @RequestBody Employee employee) {
         employeeServiceImpl.updateEmployee(id, employee);
 

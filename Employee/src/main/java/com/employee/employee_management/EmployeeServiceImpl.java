@@ -1,6 +1,7 @@
 package com.employee.employee_management;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -45,5 +46,13 @@ public class EmployeeServiceImpl implements EmployeeService {
         updatedEmployee.setTitle(employee.getTitle());
         this.addEmployee(updatedEmployee);
     }
+
+
+    @Override
+    public List<Employee> findAllEmployeesByDepartmentId(int id){
+        return employeeRepository.findAllByDepartmentId(id);
+
+    }
+
 
 }
